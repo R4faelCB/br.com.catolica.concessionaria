@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Concessionaria {
         public String nome;
         public ArrayList<Veiculo> veiculos;
@@ -64,7 +66,7 @@ public class Concessionaria {
 
     public boolean cadastrarCliente(Cliente cliente){
         for (int index = 0; index < this.totalClientes; index++){
-            if(this.clientes.get(index).id.equals(cliente.id)){
+            if(this.clientes.get(index).id == cliente.id){
                 return false;
             }
         }
@@ -79,7 +81,7 @@ public class Concessionaria {
 
     public boolean removerCliente(int id){
         for (int index = 0; index < this.totalClientes; index++){
-            if(this.clientes.get(index).id.equals(id)){
+            if(this.clientes.get(index).id == (id)){
                 Cliente clienteBuscado = this.clientes.get(index);
                 this.clientes.remove(index);
                 this.totalClientes--;
@@ -88,4 +90,44 @@ public class Concessionaria {
         }
         return false;
     }
+
+    public boolean realizarVenda(String placa, int idCliente, String dataVenda, String formaPagamento, double valor){
+        Veiculo veiculo = null;
+
+        for ( int index = 0; index < this.totalVeiculos; index++){
+            if(this.veiculos.get(index).placa.equals(placa)){
+                this.veiculos.get(index).disponivel = false;
+                veiculo = this.veiculos.get(index);
+                break;
+            }
+        }
+
+        Cliente cliente = null;
+
+        for (int index = 0; index < this.totalClientes; index++){
+            if(this.clientes.get(index).id == (idCliente)){
+                cliente = this.clientes.get(index);
+                break;
+            }
+        }
+
+        if(veiculo == null || clientes == null){
+            return false;
+        }
+
+        Venda venda = new Venda(
+                veiculo,
+                cliente,
+                dataVenda
+        );
+
+        boolean statusVenda = this.vendas.add(venda);
+        if (statusVenda){
+            this.totalVendas++;
+        }
+
+        return statusVenda;
+    }
 }
+
+
