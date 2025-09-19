@@ -17,4 +17,9 @@ public class Veiculo {
     public void mudarDisponibilidade(boolean disponivel){
         this.disponivel = false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Veiculo:\n Marca = %s,\n Modelo = %s,\n Placa = %s,\n Ano = %d,\n Preço R$ %.2f", this.marca, this.modelo, this.placa, this.ano, this.preco);
+    }
 }
