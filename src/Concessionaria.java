@@ -111,14 +111,16 @@ public class Concessionaria {
             }
         }
 
-        if(veiculo == null || clientes == null){
+        if(veiculo == null || cliente == null){
             return false;
         }
 
         Venda venda = new Venda(
-                veiculo,
                 cliente,
-                dataVenda
+                veiculo,
+                dataVenda,
+                valor,
+                formaPagamento
         );
 
         boolean statusVenda = this.vendas.add(venda);
