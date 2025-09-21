@@ -12,14 +12,15 @@ public class Veiculo {
         this.placa = placa;
         this.ano = ano;
         this.preco = preco;
+        this.disponivel = true;
     }
 
     public void mudarDisponibilidade(boolean disponivel){
-        this.disponivel = false;
+        this.disponivel = disponivel;
     }
 
     @Override
     public String toString() {
-        return String.format("Veiculo:\n Marca = %s,\n Modelo = %s,\n Placa = %s,\n Ano = %d,\n Preço R$ %.2f", this.marca, this.modelo, this.placa, this.ano, this.preco);
+        return String.format("Veiculo:\n Disponivel,\n Marca = %s,\n Modelo = %s,\n Placa = %s,\n Ano = %d,\n Preço R$ %.2f",this.disponivel, this.marca, this.modelo, this.placa, this.ano, this.preco);
     }
 }

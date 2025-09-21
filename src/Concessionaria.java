@@ -128,6 +128,20 @@ public class Concessionaria {
 
         return statusVenda;
     }
+
+    public ArrayList<Veiculo> listarVeiculosDisponiveis(boolean disponivel) {
+        ArrayList<Veiculo> buscarDisponiveis = new ArrayList<>();
+        for (int index = 0; index < totalVeiculos; index++) {
+            if (this.veiculos.get(index).disponivel == true) {
+                buscarDisponiveis.add(this.veiculos.get(index));
+            }
+        }
+        return buscarDisponiveis;
+    }
+
+    public ArrayList<Venda> listarTodasVendas(Venda venda) {
+        return new ArrayList<>(this.vendas);
+    }
 }
 
 
