@@ -134,7 +134,7 @@ public class Concessionaria {
     public ArrayList<Veiculo> listarVeiculosDisponiveis(boolean disponivel) {
         ArrayList<Veiculo> buscarDisponiveis = new ArrayList<>();
         for (int index = 0; index < totalVeiculos; index++) {
-            if (this.veiculos.get(index).disponivel == true) {
+            if (this.veiculos.get(index).disponivel == disponivel) {
                 buscarDisponiveis.add(this.veiculos.get(index));
             }
         }
@@ -143,6 +143,11 @@ public class Concessionaria {
 
     public ArrayList<Venda> listarTodasVendas(Venda venda) {
         return new ArrayList<>(this.vendas);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Concessionaria:\n Total de Venda = %d,\n Total de Veiculos = %d,\n Total de Clientes = %d.", this.totalVendas, this.totalVeiculos, this.totalClientes);
     }
 }
 
